@@ -10,6 +10,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 
 import com.jkkc.mymusic.R;
+import com.jkkc.mymusic.ui.guide.GuideActivity;
 
 
 public class WelcomeActivity extends BaseActivity {
@@ -46,7 +47,7 @@ public class WelcomeActivity extends BaseActivity {
 
                 //2.需要跳转界面
 
-                startToActivity(MainActivity.class);
+                startToActivity(GuideActivity.class);
                 finish();
             }
         });
