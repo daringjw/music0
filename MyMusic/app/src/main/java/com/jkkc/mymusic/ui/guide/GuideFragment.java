@@ -1,12 +1,6 @@
 package com.jkkc.mymusic.ui.guide;
 
 import android.net.Uri;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.jkkc.mymusic.R;
 import com.jkkc.mymusic.ui.widget.CustomView;
@@ -15,55 +9,46 @@ import com.jkkc.mymusic.ui.widget.CustomView;
  * Created by Guan on 2018/3/8.
  */
 
-public class GuideFragment extends Fragment {
+public class GuideFragment extends LoadFragment {
 
 
+    //构造出一个自定义的播放控件
     private CustomView mCustomView;
-
-    //构造出一个自定义播放控件
     public GuideFragment() {
-
+        // Required empty public constructor
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
 
-        mCustomView = new CustomView(getContext());
+    @Override
+    protected void lazyLoadData() {
+        mCustomView = findViewById(R.id.cv);
         int index = getArguments().getInt("index");
         Uri uri;
-        if (index == 1) {
+        if(index == 1){
             uri = Uri.parse("android.resource://" + getActivity().getPackageName() + "/" + R.raw.guide_1);
+        }else if(index == 2){
 
-        } else if (index == 2) {
             uri = Uri.parse("android.resource://" + getActivity().getPackageName() + "/" + R.raw.guide_2);
-
-        } else {
+        }else {
 
             uri = Uri.parse("android.resource://" + getActivity().getPackageName() + "/" + R.raw.guide_3);
-
         }
 
         mCustomView.playVideo(uri);
-
-//        View view = View.inflate(getActivity(), R.layout.activity_guide, null);
-
-        return mCustomView;
-
-
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    protected int setContentView() {
+        return R.layout.fragment_guide;
+    }
 
-        if (mCustomView != null) {
+
+    @Override
+    protected void stopLoad() {
+        super.stopLoad();
+        if(mCustomView != null){
             mCustomView.stopPlayback();
-
         }
-
-
     }
 
 
