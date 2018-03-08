@@ -32,5 +32,6 @@ dependencies {
     compile rootProject.ext.libSupportV4
     compile rootProject.ext.libButterknife
 
+    compile 'com.bilibili:magicasakura:0.1.8@aar'
 
 }

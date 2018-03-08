@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.jkkc.mymusic.R;
 import com.jkkc.mymusic.ui.BaseActivity;
+import com.jkkc.mymusic.ui.MainActivity;
 
 import java.util.ArrayList;
 
@@ -102,6 +103,15 @@ public class GuideActivity extends BaseActivity {
             } else {
                 mIv3.setImageResource(R.mipmap.dot_focus);
                 mBtStart.setVisibility(View.VISIBLE);
+
+                mBtStart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        startToActivity(MainActivity.class);
+                        finish();
+                    }
+                });
             }
 
         }
